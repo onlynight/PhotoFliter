@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.lion.photofilter.sample">
+    package="com.github.lion.photofliter">
 
     <application
         android:allowBackup="true"
