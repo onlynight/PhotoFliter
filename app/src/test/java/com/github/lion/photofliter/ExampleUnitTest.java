@@ -1,4 +1,4 @@
-package com.github.lion.photofliter;
+package com.github.lion.photofiltersample;
 
 import org.junit.Test;
 

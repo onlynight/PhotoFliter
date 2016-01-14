@@ -1,4 +1,4 @@
-package com.github.lion.photofliter;
+package com.github.lion.photofiltersample;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
