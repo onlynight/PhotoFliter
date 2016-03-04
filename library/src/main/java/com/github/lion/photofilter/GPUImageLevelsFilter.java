@@ -5,7 +5,7 @@ import android.opengl.GLES20;
 /**
  * Created by vashisthg 30/05/14.
  */
-public class GPUImageLevelsFilter extends GPUImageFilter{
+public class GPUImageLevelsFilter extends GPUImageFilter {
 
     private static final String LOGTAG = GPUImageLevelsFilter.class.getSimpleName();
 

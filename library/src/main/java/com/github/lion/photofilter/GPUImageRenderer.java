@@ -72,6 +72,12 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
     private boolean mFlipVertical;
     private GPUImage.ScaleType mScaleType = GPUImage.ScaleType.CENTER_CROP;
 
+    private OnPreviewCallbackListener onPreviewCallbackListener;
+
+    public void setOnPreviewCallbackListener(OnPreviewCallbackListener onPreviewCallbackListener) {
+        this.onPreviewCallbackListener = onPreviewCallbackListener;
+    }
+
     public GPUImageRenderer(final GPUImageFilter filter) {
         mFilter = filter;
         mRunOnDraw = new LinkedList<Runnable>();
@@ -129,6 +135,11 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
 
     @Override
     public void onPreviewFrame(final byte[] data, final Camera camera) {
+        if (onPreviewCallbackListener != null) {
+//            byte[] tempData = Arrays.copyOf(data, data.length);
+            onPreviewCallbackListener.onPreviewFrame(data, camera);
+        }
+
         final Size previewSize = camera.getParameters().getPreviewSize();
         if (mGLRgbBuffer == null) {
             mGLRgbBuffer = IntBuffer.allocate(previewSize.width * previewSize.height);
@@ -335,5 +346,9 @@ public class GPUImageRenderer implements Renderer, PreviewCallback {
         synchronized (mRunOnDrawEnd) {
             mRunOnDrawEnd.add(runnable);
         }
+    }
+
+    public interface OnPreviewCallbackListener {
+        void onPreviewFrame(byte[] data, Camera camera);
     }
 }
